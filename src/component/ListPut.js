@@ -8,8 +8,9 @@ export default function ListPut({value,onEdit,id,onSubmit}) {
     setEditTitle(e.target.value)
   }
   const submitHandler=(e)=>{
-    e.preventDefault()
     onSubmit()
+    e.preventDefault()
+   
     const response={
       id:id,
       title:enterTitle,
@@ -20,7 +21,7 @@ export default function ListPut({value,onEdit,id,onSubmit}) {
 
   return (
     
-  <form onSubmit={submitHandler} className="absolute  top-4 flex space-x-2">
+  <form onSubmit={submitHandler} className="absolute top-[-35px] flex space-x-2">
 
  <input className="outline-none bg-inherit border-b-2 border-blue-500 focus:outline-slate-100" value={enterTitle} onChange={changehandler}/>
 

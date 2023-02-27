@@ -44,8 +44,9 @@ function App() {
     }
   };
   const editHandler = async (fromChild) => {
+    setLoading(true)
     try {
-      setLoading(true)
+      
       const response = await Axios.put(`/task/${fromChild.id}`, {
         title: fromChild.title,
         // compelete: fromChild.compelete,

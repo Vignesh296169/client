@@ -26,12 +26,12 @@ export default function Listitem({value,onEdit}) {
     <div className='flex justify-center items-center space-x-2 mt-2' >
       <div className=' p-1 relative'>
         {content}</div>
-        <div >
+       
      <li className={`font-default text-2xl shadow-sm ${value.complete? "line-through":""}`}>
         {value.title}
    
      </li>
-     </div>
+   
      <div >
      <MdOutlineCreate onClick={changehandler}  className="text-xl hover:text-red-400 text-slate-400 drop-shadow-lg" /></div>
      </div>
