@@ -4,10 +4,13 @@ import ListState from "./component/ListState";
 import Form from "./component/Form";
 function App() {
   const [title, setTitle] = useState([]);
+  const[isLoading,setLoading]=useState(true)
   useEffect(() => {
     const Fetching = async () => {
+       setLoading(true)
       try {
         const request = await Axios.get("/task");
+         setLoading(false)
         setTitle(request.data.tasks);
       } catch (err) {
         console.log(err.message);
@@ -58,11 +61,13 @@ function App() {
       console.log(err.message);
     }
   };
+  const loading=<p className="text-3xl font-default text-blue-500 text-center">loading....</p>
   return (
     <div >
         <p className="bg-white p-2 text-gray-500  font-default text-[30px]">MERN Todo</p>
       <Form Value={childValue} />
-      <ListState value={title} onDelete={deleteHandler} onEdit={editHandler} />
+  
+        {isLoading ?loading:<ListState value={title} onDelete={deleteHandler} onEdit={editHandler} /> }    
     </div>
   );
 }
