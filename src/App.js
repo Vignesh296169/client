@@ -6,8 +6,9 @@ function App() {
   const [title, setTitle] = useState([]);
   const[isLoading,setLoading]=useState(true)
   useEffect(() => {
+    setLoading(true)
     const Fetching = async () => {
-       setLoading(true)
+     
       try {
         const request = await Axios.get("/task");
          setLoading(false)
@@ -29,11 +30,14 @@ function App() {
   };
   const deleteHandler = async (id) => {
     // console.log(id)
+    setLoading(true)
     try {
+
       await Axios.delete(`/task/${id}`);
       const response = title.filter((book) => {
         return book._id !== id;
       });
+      setLoading(false)
       setTitle(response);
     } catch (err) {
       console.log(err.message);
@@ -41,6 +45,7 @@ function App() {
   };
   const editHandler = async (fromChild) => {
     try {
+      setLoading(true)
       const response = await Axios.put(`/task/${fromChild.id}`, {
         title: fromChild.title,
         // compelete: fromChild.compelete,
@@ -56,6 +61,7 @@ function App() {
         }
         return title;
       });
+      setLoading(false)
       setTitle(update);
     } catch (err) {
       console.log(err.message);
