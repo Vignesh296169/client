@@ -56,7 +56,7 @@ function App() {
         if (title._id === response.data.task._id) {
           return {
             ...title,
-            title: response.data.task.title,
+             ...response.data,
             // complete: response.data.task.compelete,
           };
         }
